@@ -17,3 +17,6 @@ for x in "William":
 
 b= "William is amazing"
 print(len(a))
+
+txt="the best things in life are free!"
+print("free" in txt)
