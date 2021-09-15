@@ -18,5 +18,16 @@ for x in "William":
 b= "William is amazing"
 print(len(a))
 
-txt="the best things in life are free!"
-print("free" in txt)
+#txt="the best things in life are free!"
+#print("free" in txt)
+
+#txt= "the best things in life are free!"
+#if "free" in txt:
+    #print("Yes, 'free' is present.")
+
+txt= " the best things in life are free"
+if "expensive" not in txt:
+    print("No, 'expensive' is NOT present.")
+    
+
+
