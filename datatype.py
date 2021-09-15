@@ -22,7 +22,7 @@ os.system('cls')
 
 #unicode acsII + extra 
 
-userInput=(input(" type something "))
+userInput=(input(" type something ")) #sting - 'str'
 print(type(userInput))
 
 try:
@@ -37,13 +37,16 @@ print(check)
 #char- 1 
 #array- keeps several things together, "i am cool" is an array of characters
 
-if(check):
+if(check): #boolean (if, else, etc.) #if this is true i want to print nothing
     #i'll be back
     print()
 else:
-    print(len(userInput))
+    print(len(userInput)) 
 for i in userInput:
     print(i)
 
 if len(userInput>3):
     print(userInput[3])
+
+    #for i in (word)
+    #print (i, end = " ")
