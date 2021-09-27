@@ -1,48 +1,35 @@
 #9/26/21
 #William Maher
 
-#this is a number guessing game
+#this is a word guessing game
 
-import random
+import random,os,sys
+os.system('cls')
 
-game=True
-
-
-
-print("The goal of this game is to guess a word, you have 10 chances to guess, I will give you hints ")
+print("The goal of this game is to guess a word, you have unlimited chances to guess")
 answer = input ("Do you want to play this game? y/n ")
 
-print("This is a type of fruit")
-   
-while ('y' in answer):
-    guessesTaken=10
-    word=input ("Give me a word: ")
-    print("Hint: it is a type of fruit")
 
-    while game and guessesTaken > 0:
+while( 'y' in answer):
+    start=1
 
-        word=input("Give me a word: ")
-        
-    if word == 'banana':
-        print(" Hint: It is yellow")
-        input("Give me a word: ")
-        if answer== 'banana':
-            print(answer.lower)
-            print("Correct")
-        if answer != 'banana':
-            print("That is incorrect")
-            print("Monke eat")
+    fruits=['strawberry','raspberry','blueberry']
+
+    myFruit = random.choice(fruits)
+    myFruit=myFruit.lower()
+    print(myFruit)
+
+    while(start == 1):
+        userInput=input("Give me a fruit:")
+        if(userInput == myFruit):
+            print("You win!")
+            start=0
+        else:
+            userInput != myFruit
+            print("incorrect")
 
 
-            
-            
-
-
-
-
-
-
-
+    answer=input("Would you like to play again? ")
 
 
 
