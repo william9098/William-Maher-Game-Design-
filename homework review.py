@@ -30,7 +30,7 @@ print(txt.format(age))
 quantity: 30
 itemno:78
 price: 49.95
-rder: "I want {0} quantities for of {} item for {} dollars" "
+order: "I want  quantities for of  item for  dollars" "
 
 
 
