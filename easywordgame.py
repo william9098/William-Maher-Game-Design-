@@ -21,7 +21,9 @@ def updateWord(word, guesses): #function to update dashes and letters
             print('_', end = ' ')
 
 
+
 #define function for Menu
+print("You will guess a word choose a section ")
 def Menu():
     print("######################################")
     #put instructions above menu
@@ -34,7 +36,7 @@ def Menu():
     print("#######################################")
     print()
     sel=input("What would you like to do?"
-    #try and except
+    #try and excep
     sel=int(sel)
     return sel
 def selWord(sel):
