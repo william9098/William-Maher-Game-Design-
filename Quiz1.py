@@ -1,5 +1,5 @@
 #William Maher
-#This is for a quiz
+#This is for a quiz 1
 #10/5/21
 
 #question 1:
@@ -50,4 +50,6 @@ MyList=['0','1','2','3','4','6','7','8','9','10']
 MyList.insert(5,'5')
 
 print(MyList)
+
+
 
