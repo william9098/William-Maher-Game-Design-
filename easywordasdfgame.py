@@ -18,7 +18,8 @@ def Menu():
     print("           1. Animals          ")
     print("           2. Computer Parts         ")
     print("           3. Fruits         ")
-    print("           4. Exit          ")
+    print("           4. Scoreboard    ")
+    print("           5. Leave            ")        
     print()
     print("############################")
     print("To play the game, select 1-3 and to exit select 4.")
@@ -40,79 +41,62 @@ animals=["tiger", "elephant", "lion"]
 fruits=["apple", "strawberry", "blueberry"]
 compParts=["keyboard", "monitor", "case", "mouse"]
 name= input("What is your name? ")
-maxScore=0
+maxScore=100
 sel = Menu()
 
+def leave():
+    if sel==5:
+        print("bye")
+    os._leave()
 
-while sel !=4:
-    if sel == 1:
-        print(name + ", good luck! You have 5 chances to guess my word.")
-        word = random.choice(animals)
-        word = word.lower()
-        wordCount=len(word)
-        turns=wordCount+2
-        score=0
-        letCount=0
-        print(word) #Just for checking our code, remove later.
-        guesses = '' 
-        updateWord(word, guesses)
 
-        while turns > 0 and letCount<wordCount:
-            print()
-            newguess=input("Give me a letter: ")
-            newguess=newguess.lower()
-            if newguess in word:
-                guesses += newguess
-                print("You guessed one letter. ")
-            else:
-                turns-=1
-                print("Sorry, you have ", turns, " turns left.")
-            updateWord(word, guesses)    
-    if sel == 2:
-        print(name + ", good luck! You have 5 chances to guess my word.")
-        turns=5
-        word = random.choice(compParts)
-        word = word.lower()
-        print(word)
-        guesses = ' ' 
-        updateWord(word, guesses)
 
-        while turns > 0:
-            print()
-            newguess=input("Give me a letter: ")
-            newguess=newguess.lower()
-            if newguess in word:
-                guesses += newguess
-                print("You guessed one letter. ")
-            else:
-                turns-=1
-                print("Sorry, you have ", turns, " turns left.")
+if sel == 4:
+    myFile=open('score.txt', 'r')
+    print(myFile.read)()
+    myFile.close()
 
-    if sel == 3:
-        print(name + ", good luck! You have 5 chances to guess my word.")
-        turns=5
+
+def wordSelect():
+    if sel ==1:
+        word=random.choice(animals)
+    if sel ==2:
+        word= random.choice(compParts)
+    if sel ==3:
         word = random.choice(fruits)
-        word = word.lower()
-        print(word) 
-        guesses = ' ' 
-        updateWord(word, guesses)
+    return word
 
-        while turns > 0:
-            print()
-            newguess=input("Give me a letter: ")
-            newguess=newguess.lower()
-            if newguess in word:
-                guesses += newguess
-                print("You guessed one letter. ")
-            else:
-                turns-=1
-                print("Sorry, you have ", turns, " turns left.")
-    updateWord(word,guesses)
-             
+while sel !=5 and sel!=4:
+    #call function her to choose word
+    word=wordSelect()
+    
+    word = word.lower()
+    wordCount=len(word)
+    turns=wordCount+2
+    score=0
+    print(word) #Just for checking our code, remove later.
+    guesses = '' 
+    updateWord(word, guesses)
+
+    while turns > 0:
+        newguess=input("Give me a letter: ")
+        newguess=newguess.lower()
+        if newguess in word:
+            guesses += newguess
+            print("You guessed one letter. ")
+        else:
+            turns-=1
+            print("Sorry, you have ", turns, " turns left.")
+            updateWord(word, guesses)    
+    
+    
+    
 
     os.system('cls')
     score=3*wordCount+5*turns
     if score > maxScore:
         maxScore=score
     print(maxScore)
-    sel=Menu()
+myFile=open('score.txt','r')
+name + "\t Highest score:\t"+ str(maxScore) # line 103 and 104 need to be put into exit fucntin
+sel=Menu()

@@ -1,14 +1,3 @@
-#Word Game
-# William Maher
-#09/29/2021
-# We are creating a list of words
-# randomly select a word from the list for the user to guess
-# give the user some turns
-# show the word to the user with the characters guessed  
-# play as long as the user has turns or has guessed the word
-
-
-
 import random, os
 os.system('cls')
 #function to update dashes and letters
@@ -27,9 +16,9 @@ def Menu():
     print("#                MENU                  #")
     print("#                                      #")
     print("#       1. Animals                     #")
-    print("#       2. Computer Parts              #")
+    print("#       2. Computer PArts              #")
     print("#       3. Fruits                      #")
-    print("#       4. Scoreboard                  #")
+    print("#       4. ScoreBoard                  #")
     print("#       5. Exit                        #")
     print("#    To play the game select 1-4       #")
     print("#       To exit select 5               #")
@@ -42,19 +31,30 @@ def Menu():
 def selWord(sel):
     if sel == 1:
         word= random.choice(animals)
-    elif sel==2:
+    elif sel ==2:
         word= random.choice(compParts)
     elif sel ==3: 
         word= random.choice(fruits)
     return word
-    
-    
-# create the function for the score board and comeback to main menu
-# create the function to Exit, where you write to the file the max score and exit game
+
+def leave():
+    if sel==5:
+        print("bye")
+    os._leave()
+
+if sel == 4:
+    myFile=open('score.txt', 'r')
+    print(myFile.read)()
+    myFile.close()
+
 
 animals=["tiger", "elephant"]
 fruits=["banana", "strawberries"]
 compParts=["keyboard", "Monitors", "computer","trackpad", "case","Operating System"]
+maxScore=80
+sel= (Menu)
+
+
 
 name= input("What is your name? ")
 maxScore=0 #to store highest Score
@@ -62,8 +62,9 @@ sel = Menu()
 print(sel)
 while sel==1 or sel==2 or sel==3:
     print(name, " Good Luck! you have 5 chances to guess")
-    word = word.lower()
+    
     word= selWord(sel)
+    word = word.lower()
     wordCount=len(word)
     turns= wordCount+2  #depending on the lenght if the word
     letCount=0 #variable to check if the user guessed the word
