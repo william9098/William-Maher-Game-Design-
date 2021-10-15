@@ -1,2 +1,4 @@
- and now we will play a game
- the highest score: 	450
+w	 Highest score:	0
+w	 Highest score:	0
+/usr/bin/python3 "/Users/williammaher/Desktop/game design folder/William-Maher-Game-Design-/askfjsdfl.py"	 Highest score:	0
+/usr/bin/python3 "/Users/williammaher/Desktop/game design folder/William-Maher-Game-Design-/askfjsdfl.py"	 Highest score:	0

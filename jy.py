@@ -1,7 +1,7 @@
 import random, os
 os.system('cls')
 
-def updateWord(word, guesses):
+def updateWord(word, guesses): #Function to update dashes
     correctCount = 0
     for letter in word:
         if letter in guesses:
@@ -14,11 +14,13 @@ def updateWord(word, guesses):
     else:
         return False
 
+#define function for menu
 def Menu():
     print()
+    print("You have to guess a word, the type of word is provided below")
+    print()
     print("###############################")
-    print("The goal is to guess a word from a category, the categories are provided below")
-    print("#          MENU        #")
+    print("          ----Menu----         ")
     print(                                 )
     print("           1. Animals          ")
     print("           2. Computer Parts         ")
@@ -27,9 +29,10 @@ def Menu():
     print("           5. Exit          ")
     print()
     print("############################")
-    print("#    To play the game select 1-3       #")
-    print("#       To exit select 5              #")
+    print("To play the game, select 1-3 and to exit select 5.")
+    print()
     sel=input("What would you like to do? ")
+    #Put in try and except here
     sel=int(sel)
     return sel
 
@@ -41,12 +44,14 @@ def updateScoreFile():
 
 def endGame():
     updateScoreFile()
+    print("So long, " + name + "!")
     os._exit(0)
 
 def sel4():
     myFile= open('score.txt', 'r')
     print(myFile.read())
     myFile.close()
+    #Turn into function and CLOSE FILE
     sel = Menu()
     return sel
 
@@ -59,18 +64,19 @@ def wordSelection():
         word = random.choice(fruits)
     return word
 
-animals=["tiger", "elephant"]
-fruits=["banana", "strawberries"]
-compParts=["keyboard", "Monitors", "computer","trackpad", "case","Operating System"]
+animals=["tiger", "elephant", "lion"]
+fruits=["apple", "strawberry", "blueberry"]
+compParts=["keyboard", "monitor", "case", "mouse"]
 name= input("What is your name? ")
 maxScore = 0
+
+#Main program starts here
 
 sel = Menu()
 
 while sel!=0:
 
     if sel==5:
-        print("Goodbye!")
         endGame()
     elif sel==4:
         sel = sel4()
@@ -80,7 +86,8 @@ while sel!=0:
         wordCount = len(word)
         turns = wordCount+2
         score = 0
-        print(name + ", Good Luck! You have", turns, "chances to guess my word.")
+        print(name + ", good luck! You have", turns, "chances to guess my word.")
+        print(word) #Just for checking our code, remove later.
         guesses = '' 
         correctGuess = False
         updateWord(word, guesses)
@@ -93,16 +100,16 @@ while sel!=0:
                 print("You guessed one letter. ")
             else:
                 turns -= 1
-                print("\n You have ", turns, " turns left.")
+                print("\nSorry, you have ", turns, " turns left.")
             correctGuess = updateWord(word, guesses) 
         
         if correctGuess == False:
-            print("You are out of turns!")
+            print("Sorry but you're out of turns!")
         
         score = 3*wordCount + 5*turns
         if score > maxScore:
             maxScore = score
-        answer = input("\n Would you like to return to menu? y/n ")
+        answer = input("Return to menu? y/n ")
         if ('y' in answer):
             sel = Menu()
         else:

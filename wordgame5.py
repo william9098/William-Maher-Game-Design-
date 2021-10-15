@@ -25,10 +25,10 @@ def Menu():
     print("########################################")
     print()
     sel=input("What would you like to do? ")
-
+    # add the Try and except before you force sel to be an int
     sel=int(sel)
+    sel=Menu()
     return sel
-
 def selWord(sel):
     if sel == 1:
         word= random.choice(animals)
@@ -38,21 +38,29 @@ def selWord(sel):
         word= random.choice(fruits)
     return word
 
+
 def exit():
     if sel==5:
         print("bye")
-    os.exit()
+    os._exit()
+
 
 animals=["tiger", "elephant"]
 fruits=["banana", "strawberries"]
 compParts=["keyboard", "Monitors", "computer","trackpad", "case","Operating System"]
-maxScore=80
 sel=Menu()
 
 if sel == 4:
     myFile=open('score.txt', 'r')
     print(myFile.read())
     myFile.close()
+# create the function for the score board and comeback to main menu
+# create the function to Exit, where you write to the file the max score and exit game
+
+animals=["tiger", "elephant"]
+fruits=["banana", "strawberries"]
+compParts=["keyboard", "Monitors", "computer","trackpad", "case","Operating System"]
+sel=Menu()
 
 name= input("What is your name? ")
 maxScore=0 #to store highest Score
@@ -60,6 +68,7 @@ sel = Menu()
 print(sel)
 while sel==1 or sel==2 or sel==3:
     print(name, " Good Luck! you have 5 chances to guess")
+    
     word= selWord(sel)
     word = word.lower()
     wordCount=len(word)
