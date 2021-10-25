@@ -13,14 +13,15 @@ import pygame,os
 import random
 
 from pygame.constants import CONTROLLER_AXIS_INVALID
+from pygame.display import update
 
 from pygame.mouse import get_pressed
 #first thing to do is initialize pygame
 pygame.init()
 
 check=True
-height= 500
-width= 500
+width2=600
+height2=700
 colors= {'purple':(150,0,150), 'pink':(200,0,200), 'cyan':(0,255,255), 'yellow':(255,255,50),'orange':(255,150,0) } 
 colorName= ("purple", "pink", "cyan", "yellow", "orange")
 
@@ -57,7 +58,7 @@ def moveRect():
         
 color=colors.get('cyan')
 
-window=pygame.display.set_mode((height,width))
+window=pygame.display.set_mode((height2,width2))
 window.fill(('purple')) #RGB- colors in comp sci are either Red, Green or Blue, or a combination of them. red=255, FF green=255,FF blue=255, FF, 
 # combination could be 100,120,255(EF)
 pygame.display.flip() # refresh window with new color
@@ -65,20 +66,18 @@ pygame.display.set_caption("My Game Window")
 pygame.display.flip()
 hbox=50
 wbox=50
-xc=random.randint(25,200)
-yc=random.randint(25,200)
+xc=random.randint(25,width2-wbox)
+yc=random.randint(25,height2-hbox)
 radius=wbox/2
 speed=5
-width2=random.randint(5,495)
-height2=random.randit(5,495)
 pygame.draw.circle(window, 'orange',(xc,yc),radius)
-rect=pygame.Rect(width/2, height/2, wbox, hbox)
+
 rect=pygame.Rect(width2/2, height2/2, wbox, hbox)
 pygame.draw.rect(window,color,rect)
 pygame.display.flip()
 
 run=True
-
+counter=0
 circle=(window,'orange',(xc,yc), radius)
 #main loop for the game:
 while run:
@@ -86,8 +85,8 @@ while run:
     for case in pygame.event.get():
         if case.type == pygame.QUIT:
             run= False
-    rectPos=(rect.x, rect.y)
-    circlePos=(xc,yc)
+    rectPos=rect.x,rect.y
+    circlePos=xc,yc
 
 
     #how to get position of mouse
@@ -120,22 +119,27 @@ while run:
         yc +=speed
         moveRect()
 
-    if rect.y>500:
+    if rect.y>height2:
         rect.y=0
     if rect.y<0:
-        rect.y=500
-    if rect.x>500:
+        rect.y=height2
+    if rect.x>width2:
         rect.x=0
     if rect.x<0:
-        rect.x=450
+        rect.x=width2
+
     
-if rectPos==circlePos:
-    pygame.display.flip()
-    window.fill('purple')
-    pygame.display.flip()
+    if pygame.Rect.collidepoint(rect,(xc,yc)):
+        radius+=radius/2
+        rect.x=random.randint(10,width2-wbox)
+        rect.y=random.randint(10,height2-hbox)
+        counter+=1
+    if counter==3:
+        run=False
     pygame.draw.circle(window, 'orange',(xc,yc),radius)
-    pygame.display.flip()
     pygame.draw.rect(window,color,rect)
+    pygame.display.flip()
+
 
 pygame.quit()
 
