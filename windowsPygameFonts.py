@@ -50,20 +50,23 @@ def display_message4(message):
     #py.time.delay(100)
 
 
-
+counter=0
 run=True 
 while run:
     for eve in py.event.get():
         if eve.type == py.QUIT: #pygame.QUIT is looking for a key pressed, while pygame.quit() is a function
             run=False
             py.quit()
+    if counter==0:
         window.fill((0,0,0))
-    display_message("SETTINGS")
-    display_message2("Background Color")
-    display_message3("Object Color")
-    display_message4("Sound=On/Off")
-    #py.time.delay(300)
-    py.display.update()
+        display_message("SETTINGS")
+        display_message2(" . Background Color")
+        display_message3(". Object Color")
+        display_message4(" . Sound=On/Off")
+        py.time.delay(300)
+        py.display.update()
+        counter+=1
+        
 
 
 #print the rest of your menu for settings
