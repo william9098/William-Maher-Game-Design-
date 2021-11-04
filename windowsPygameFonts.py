@@ -1,4 +1,4 @@
-#william maher
+#William Maher
 #10/25/21 Learning Fonts and Blit
 
 import pygame as py, os, random, time
@@ -353,9 +353,4 @@ py.quit()
 #for (i in range)
 
 
-# display_message("oops")
-#     pygame.time.delay(300)
-#     window.fill(BLACK)
-#     display_message("AHHHH")
-#     pygame.time.delay(300)
-#     window.fill(BLACK)
+#
