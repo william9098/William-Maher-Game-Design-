@@ -26,11 +26,10 @@ GREEN=(0,128,0)
 MenuMessages=["Instructions", "Level 1", "Level 2", "Settings", "Scoreboard", "Exit"]
 settingsmessages=["Background Color", "Object Color", "Sound On/Off", "Screen Size"]
 bkgcolors=["Black", "Blue", "Green"]
-width=800
-height=800
-
-
-window=py.display.set_mode((width,height))
+scrnsizemessages=["300 x 300", "500 x 500", "800 x 800"]
+WIDTH=800
+HEIGHT=800
+window=py.display.set_mode((WIDTH,HEIGHT))
 py.display.set_caption("Setting Window")
 
 #TITLE_FONT=pygame.font.SysFont(name, size, bold=False, italic=False)
@@ -47,7 +46,7 @@ square=py.Rect(10,10, wbox, hbox)
 def display_Title(message,y):
     #py.time.delay(100)
     text= TITLE_FONT.render(message, 1, WHITE) #render prints text
-    x=width/2-text.get_width()/2
+    x=WIDTH/2-text.get_width()/2
    # window.blit(text, (WIDTH/2-text.get_width()/2), (HEIGHT/2-text.get_height()/2))
     window.blit(text, (x,y)) #TExt, (x,y)) text, (WIDTH/2-text.get_width()/2, 10
     py.display.update()
@@ -69,11 +68,21 @@ def display_Menu(messages):
         y+=80
         square.y=y
 
-
-
-
-
-
+def Screen_Size():
+    x=70
+    y=190
+    square.x=x
+    square.y=y
+    for i in range(0, len(scrnsizemessages)):
+        word=scrnsizemessages[i]
+        py.draw.rect(window, RED, square)
+        text=TITLE_FONT.render(word, 1, WHITE)
+        window.blit(text, (x+wbox+10,y))
+        py.display.flip()
+        py.time.delay(100)
+        y+=80
+        square.y=y
+    
 
 
 
@@ -208,6 +217,7 @@ while run:
             elif currentDisplay==DISPLAY_SETTINGS and mouse_pos[0]>=70 and mouse_pos[0]<=95 and mouse_pos[1]>=430 and mouse_pos[1]<=460:
                 window.fill(bkgcolor)
                 display_Title("Screen Size", 70)
+                display_Menu(scrnsizemessages)
                 display_Title("Back", 750)
                 py.display.update()
                 currentDisplay=DISPLAY_SETTINGS_SCREEN_SIZE
@@ -313,48 +323,6 @@ while run:
             #         display_Menu()
             #         py.display.update()
             #         currentDisplay==DISPLAY_MAIN_MENU
-        #google images for game characters 64 x 64
+                
 py.quit()
      
-        
-#jump=false
-#jump=true
-
-# xmove, ymove
-
-
-
-#create main menu with levels with rectangles, settings, instructions, 
-
-#Instructions
-# Level 1
-# #level 2
-#Scoreboard
-#Settings
-#Exit
-
-
-
-
-#if mouse_pos[0]>=75 and mouse_pos[0]<=260 and mouse_pos[1]>=95 and mouse_pos[1]<=300:
-
-
-
-
-#if counter==0:
-# display_Title("SETTINGS", WIDTH/2-text.get_width()/2, 170)
-        # display_message2("Background Color")
-        # display_message3("Object Color")
-        # display_message4("Sound=On/Off")
-        # display_message5("Screen Size")
-        # py.time.delay(300)
-        # py.display.update()
-        # counter+=1
-#print the rest of your menu for settings
-# 
-# Windows
-# Background Color
-# Objet COlors
-# Sound= on/off
-# for (display_message (x,y)) 
-#for (i in range)
