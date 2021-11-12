@@ -8,7 +8,6 @@ HEIGHT=800
 
 boulder=py.Rect(WIDTH-300, HEIGHT-200, 100, 200)
 
- 
 #first thing
 py.init()
  
@@ -48,24 +47,27 @@ while run:
         if anyThing.type == py.QUIT:
             run =False
     keyPressed= py.key.get_pressed()
-    if square.y <HEIGHT-200-hbox:
-        if keyPressed[py.K_RIGHT] and square.x <WIDTH-wbox-speed and move:
+    # if square.y <HEIGHT-200-hbox:
+    if keyPressed[py.K_RIGHT] and square.x <WIDTH-wbox-speed and move:
+        if square.colliderect(boulder):
+            square.x-=5
+        else:
             square.x += speed
-    
-        if keyPressed[py.K_LEFT] and square.x>speed-5:
+    if keyPressed[py.K_LEFT] and square.x>speed:
             square.x -= speed
     
     elif square.x <=boulder.x-wbox-5:
-        if hb
+        if keyPressed[py.K_RIGHT]:
             square.x+=speed
     
 
        
     if not(Jumping):
-        if keyPressed[py.K_DOWN] and square.y <HEIGHT-hbox-speed and move:
+        if keyPressed[py.K_DOWN] and square.y >speed:
             square.y += speed
-        if keyPressed[py.K_UP] and square.y>speed-5 and move:
-            square.y -= speed
+        if keyPressed[py.K_UP] and square.x>speed:
+            #if square.collidepoint(boulder.x,boulder.y):
+            square.y -= 5
         if keyPressed[py.K_SPACE]:
             Jumping=True
     else:
@@ -79,6 +81,8 @@ while run:
     #     move=False
     #     square.x=square.x-wbox
     #     move=True
+
+
 
     screen.fill(myColor)
     py.draw.rect(screen, objColor, square)
